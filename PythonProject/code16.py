@@ -20,3 +20,14 @@ b = 20
 
 a, b = b, a
 print(a, b)
+x = y = 10
+print(x)
+print(y)
+a, b = 10, 20
+print(a)  # 10
+print(b)  # 20
+
+a, b = 10, 20
+a, b = b, a
+print(a)  # 20
+print(b)  # 10

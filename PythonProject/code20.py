@@ -21,7 +21,7 @@
 
 # 判定年份是否是闰年
 # year = int(input('请输入一个年份: '))
-
+#
 # if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
 #     print('闰年')
 # else:
@@ -38,8 +38,35 @@
 #     else:
 #         print('平年')
 
-a = int(input('请输入一个数: '))
-if a != 1:
-    pass
-else:
-    print('hello')
+# a = int(input('请输入一个数: '))
+# if a != 1:
+#     pass
+# else:
+#     print('hello')
+#
+# a = 10
+# b = 20
+# if a < b:
+#     pass
+# while a < b:
+#     pass
+# for x in range(10):
+#     pass
+#
+#
+# def func():
+#     pass
+#
+#
+# class MyClass:
+#     pass
+#
+
+a = 10
+b = 20
+# 单行if语句
+if a < b: print('a is less than b')
+# 单行if else语句(一个条件语句)
+print('a') if a < b else print('b')
+# 单行if else语句(多个条件语句)
+print('a') if a < b else print('=') if a == b else print('b')

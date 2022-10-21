@@ -16,3 +16,15 @@ print(name1)
 print(name2)
 print(name3)
 print(name4)
+# a = "xxx"yyy"zzz"  # error
+# print(a)
+a = "dragon"
+b = 'dragon'
+c = """dragon"""
+d = '''dragon'''
+print(a)  # dragon
+print(b)  # dragon
+print(c)  # dragon
+print(d)  # dragon
+a = "xxx\"yyy\"zzz"
+print(a)

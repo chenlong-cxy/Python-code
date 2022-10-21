@@ -21,5 +21,11 @@
 # 这个代码是看a - b的差是否是一个非常小的数字，是否在误差范围之内
 a = 0.1 + 0.2
 b = 0.3
-print(a == b)
+print(a)  # 0.30000000000000004
+print(b)  # 0.3
+print(a == b)  # False
 print(-0.000001 < (a - b) < 0.000001) # Python中支持这种连续小于的写法
+
+a = 'hello'
+b = 'hello'
+print(a == b)  # True
