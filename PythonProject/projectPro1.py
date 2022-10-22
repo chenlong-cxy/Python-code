@@ -2,7 +2,7 @@ import random
 import sys
 import time
 
-# 人生重开模拟器
+# 打印初始界面
 print('+-------------------------------------------+')
 print('|                                           |')
 print('|              >>人生重开模拟器<<              |')
@@ -40,10 +40,9 @@ while True:
     print(f'颜值: {face}, 体制: {strong}, 智力: {iq}, 家境: {home}')
     break
 
-# 生成角色的性别
+# 设置角色性别
 # random.randint(begin, end)->生成[begin, end]之间的随机整数
 point = random.randint(1, 6)
-# print(f'point = {point}')
 if point % 2 == 1:
     gender = 'boy'
     print('你是个男孩')
@@ -51,7 +50,7 @@ else:
     gender = 'girl'
     print('你是个女孩')
 
-# 设定角色的出生点
+# 设置角色出生点
 point = random.randint(1, 3)
 if home == 10:
     # 第一档
