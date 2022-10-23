@@ -31,3 +31,27 @@ print(f'{a} + {b} = {sum}, {a} - {b} = {dif}')
 # 如果只想使用一部分，不关注其他的，可以用_进行占位
 _, dif = getSumAndDif(1, 2)
 print(dif)
+
+
+def Dif(x, y):
+    return x - y
+
+
+print(Dif(10, 20))  # -10
+print(Dif(y=10, x=20))  # 10
+
+
+def Add(x, y):
+    return x + y
+
+
+print(Add(10, 20))  # 30
+
+
+def test():
+    print('do something...')
+    print('do something...')
+    print('do something...')
+
+
+test()
