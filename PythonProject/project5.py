@@ -1,10 +1,32 @@
 import random
+import sys
+import os
 from pynput import keyboard
 from playsound import playsound
 from threading import Thread
 
+
+#生成资源文件目录访问路径
+def resource_path(relative_path):
+    if getattr(sys, 'frozen', False):  # 是否Bundle Resource
+        base_path = sys._MEIPASS
+    else:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
+
+# 访问res文件夹下a.txt的内容
+filename1 = resource_path(os.path.join("sound", "1.mp3"))
+filename2 = resource_path(os.path.join("sound", "2.mp3"))
+filename3 = resource_path(os.path.join("sound", "3.mp3"))
+# print(filename1)
+# print(filename2)
+# print(filename3)
+
+
 count = 0
-soundList = ['sound/1.mp3', 'sound/2.mp3', 'sound/3.mp3']
+# soundList = ['sound/1.mp3', 'sound/2.mp3', 'sound/3.mp3']
+soundList = [filename1, filename2, filename3]
 
 
 def onRelease(key):
