@@ -1,8 +1,8 @@
 # 翻转单词顺序
 def reverseWords(s: str):
-    tokens = s.split(' ')
-    tokens.reverse()
-    return ' '.join(tokens)
+    tokens = s.split(' ')    # 切分字符串
+    tokens.reverse()         # 逆序列表
+    return ' '.join(tokens)  # 拼接字符串
 
 
 print(reverseWords('I am a student.'))
