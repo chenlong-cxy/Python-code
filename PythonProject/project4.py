@@ -10,16 +10,18 @@ table = xlsx.sheet_by_index(0)
 nrows = table.nrows
 # print(f'nrows = {nrows}')
 # 4.进行循环统计操作
+for i in range(0, nrows):
+    print(table.cell_value(i, 0), sep='\t', end=' ')
+    print(table.cell_value(i, 1), sep='\t', end=' ')
+    print(table.cell_value(i, 2), sep='\t', end=' ')
+    print(table.cell_value(i, 3), sep='\t', end=' ')
+    print(table.cell_value(i, 4), sep='\t', end=' ')
+    print()
+# total = 0
+# count = 0
 # for i in range(1, nrows):
-#     print(table.cell_value(i, 0), end=' ')
-#     print(table.cell_value(i, 1), end=' ')
-#     print(table.cell_value(i, 2), end=' ')
-#     print()
-total = 0
-count = 0
-for i in range(1, nrows):
-    classId = table.cell_value(i, 1)
-    if classId == 100:
-        total += table.cell_value(i, 2)
-        count += 1
-print(f'平均分: {total / count}')
+#     classId = table.cell_value(i, 1)
+#     if classId == 100:
+#         total += table.cell_value(i, 2)
+#         count += 1
+# print(f'平均分: {total / count}')
