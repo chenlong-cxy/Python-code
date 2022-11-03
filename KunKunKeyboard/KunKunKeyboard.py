@@ -126,20 +126,124 @@
 # listener.start()
 # listener.join()
 
-import sys
+# import sys
+# import os
+# from pynput import keyboard
+# from playsound import playsound
+# from threading import Thread
+#
+#
+# # 生成资源文件目录访问路径
+# def resource_path(relative_path):
+#     if getattr(sys, 'frozen', False):  # 是否Bundle Resource
+#         base_path = sys._MEIPASS
+#     else:
+#         base_path = os.path.abspath(".")
+#     return os.path.join(base_path, relative_path)
+#
+#
+# # 建立字符串与对应音频的映射
+# letterToAudio = {
+#     'j': resource_path(os.path.join('sound', 'j.mp3')),
+#     'n': resource_path(os.path.join('sound', 'n.mp3')),
+#     't': resource_path(os.path.join('sound', 't.mp3')),
+#     'm': resource_path(os.path.join('sound', 'm.mp3')),
+#     'jntm': resource_path(os.path.join('sound', 'jntm.mp3')),
+#     'ngm': resource_path(os.path.join('sound', 'ngm.mp3')),
+#     'esc': resource_path(os.path.join('sound', 'phw.mp3')),
+#     'space': resource_path(os.path.join('sound', 'xmr.mp3'))
+# }
+# # letterToAudio = {
+# #     'j': 'sound/j.mp3',
+# #     'n': 'sound/n.mp3',
+# #     't': 'sound/t.mp3',
+# #     'm': 'sound/m.mp3',
+# #     'jntm': 'sound/jntm.mp3',
+# #     'ngm': 'sound/ngm.mp3'
+# # }
+# history = ''  # 记录历史敲击过的字母
+#
+#
+# def onRelease(key):
+#     global history
+#     audio = ''
+#     try:
+#         # 记录敲击过的字母
+#         if len(history) < 4:
+#             history += key.char
+#         else:
+#             history = history[1:] + key.char
+#
+#         # 优先判断是否触发连续字母音效,再判断是否触发单字母音效
+#         if history == 'jntm':
+#             audio = letterToAudio[history]
+#         elif history[-3:] == 'ngm':
+#             audio = letterToAudio[history[-3:]]
+#         elif key.char in 'jntm':
+#             audio = letterToAudio[key.char]
+#
+#         print(f'用户输入: {key.char}')
+#     except AttributeError:
+#         # 按下的不是普通键,可以把history清空
+#         history = ''
+#         # 判断是否触发音效
+#         if key == keyboard.Key.esc:
+#             audio = letterToAudio['esc']
+#         elif key == keyboard.Key.space:
+#             audio = letterToAudio['space']
+#         print(f'用户输入: {key.name}')
+#     # 判断是否本次敲击按键是否触发音效
+#     if audio != '':
+#         # 创建线程对象,并指定其要执行的程序例程
+#         t = Thread(target=playsound, args=(audio,))
+#         # 启动线程
+#         t.start()
+#         # playsound(audio)
+#
+#
+# listener = keyboard.Listener(on_release=onRelease)
+# listener.start()
+# listener.join()
+
+
+# from pynput import keyboard
+#
+#
+# def onRelease(key):
+#     try:
+#         print(f'用户输入: {key.char}')
+#         print(type(key.char))  # <class 'str'>
+#     except AttributeError:
+#         print(f'用户输入: {key.name}')
+#         print(type(key.name))  # <class 'str'>
+#
+#
+# listener = keyboard.Listener(on_release=onRelease)
+# listener.start()
+# listener.join()
+
+
+# from playsound import playsound
+#
+# playsound('sound/j.mp3')
+
+
 import os
+import sys
 from pynput import keyboard
 from playsound import playsound
 from threading import Thread
 
+
+# 生成资源文件目录访问路径
 def resource_path(relative_path):
-    if getattr(sys, 'frozen', False):
+    if getattr(sys, 'frozen', False):  # 是否Bundle Resource
         base_path = sys._MEIPASS
     else:
         base_path = os.path.abspath(".")
     return os.path.join(base_path, relative_path)
 
-
+# 建立字符串与对应音频的映射
 letterToAudio = {
     'j': resource_path(os.path.join('sound', 'j.mp3')),
     'n': resource_path(os.path.join('sound', 'n.mp3')),
@@ -150,44 +254,42 @@ letterToAudio = {
     'esc': resource_path(os.path.join('sound', 'phw.mp3')),
     'space': resource_path(os.path.join('sound', 'xmr.mp3'))
 }
-# letterToAudio = {
-#     'j': 'sound/j.mp3',
-#     'n': 'sound/n.mp3',
-#     't': 'sound/t.mp3',
-#     'm': 'sound/m.mp3',
-#     'jntm': 'sound/jntm.mp3',
-#     'ngm': 'sound/ngm.mp3'
-# }
-history = ''
+history = ''  # 记录历史敲击过的字母
 
 
 def onRelease(key):
     global history
     audio = ''
     try:
+        print(f'用户输入: {key.char}')
+        # 记录敲击过的字母
         if len(history) < 4:
             history += key.char
         else:
             history = history[1:] + key.char
 
+        # 优先判断是否触发连续字母音效,再判断是否触发单字母音效
         if history == 'jntm':
             audio = letterToAudio[history]
         elif history[-3:] == 'ngm':
             audio = letterToAudio[history[-3:]]
         elif key.char in 'jntm':
             audio = letterToAudio[key.char]
-        # print(f'用户输入: {key.char}')
     except AttributeError:
+        print(f'用户输入: {key.name}')
+        # 按下的不是普通键,可以把history清空
         history = ''
+        # 判断是否触发音效
         if key == keyboard.Key.esc:
             audio = letterToAudio['esc']
         elif key == keyboard.Key.space:
             audio = letterToAudio['space']
-        # print(f'用户输入: {key.name}')
+    # 判断是否本次敲击按键是否触发音效
     if audio != '':
-        t = Thread(target=playsound, args=(audio,))
+        # 创建线程对象,并指定其要执行的程序例程
+        t = Thread(target=playsound, args=(audio, ))
+        # 启动线程
         t.start()
-        # playsound(audio)
 
 
 listener = keyboard.Listener(on_release=onRelease)
