@@ -252,8 +252,18 @@ letterToAudio = {
     'jntm': resource_path(os.path.join('sound', 'jntm.mp3')),
     'ngm': resource_path(os.path.join('sound', 'ngm.mp3')),
     'esc': resource_path(os.path.join('sound', 'phw.mp3')),
-    'space': resource_path(os.path.join('sound', 'xmr.mp3'))
+    'ctrl_l': resource_path(os.path.join('sound', 'xmr.mp3'))
 }
+# letterToAudio = {
+#     'j': 'sound/j.mp3',
+#     'n': 'sound/n.mp3',
+#     't': 'sound/t.mp3',
+#     'm': 'sound/m.mp3',
+#     'jntm': 'sound/jntm.mp3',
+#     'ngm': 'sound/ngm.mp3',
+#     'esc': 'sound/phw.mp3',
+#     'ctrl_l': 'sound/xmr.mp3'
+# }
 history = ''  # 记录历史敲击过的字母
 
 
@@ -261,7 +271,7 @@ def onRelease(key):
     global history
     audio = ''
     try:
-        print(f'用户输入: {key.char}')
+        print(f'1用户输入: {key.char}')
         # 记录敲击过的字母
         if len(history) < 4:
             history += key.char
@@ -276,14 +286,14 @@ def onRelease(key):
         elif key.char in 'jntm':
             audio = letterToAudio[key.char]
     except AttributeError:
-        print(f'用户输入: {key.name}')
+        print(f'2用户输入: {key.name}')
         # 按下的不是普通键,可以把history清空
         history = ''
         # 判断是否触发音效
         if key == keyboard.Key.esc:
             audio = letterToAudio['esc']
-        elif key == keyboard.Key.space:
-            audio = letterToAudio['space']
+        elif key == keyboard.Key.ctrl_l:
+            audio = letterToAudio['ctrl_l']
     # 判断是否本次敲击按键是否触发音效
     if audio != '':
         # 创建线程对象,并指定其要执行的程序例程
