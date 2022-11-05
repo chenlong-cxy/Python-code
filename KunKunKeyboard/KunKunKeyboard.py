@@ -271,7 +271,7 @@ def onRelease(key):
     global history
     audio = ''
     try:
-        print(f'1用户输入: {key.char}')
+        # print(f'1用户输入: {key.char}')
         # 记录敲击过的字母
         if len(history) < 4:
             history += key.char
@@ -286,7 +286,7 @@ def onRelease(key):
         elif key.char in 'jntm':
             audio = letterToAudio[key.char]
     except AttributeError:
-        print(f'2用户输入: {key.name}')
+        # print(f'2用户输入: {key.name}')
         # 按下的不是普通键,可以把history清空
         history = ''
         # 判断是否触发音效
