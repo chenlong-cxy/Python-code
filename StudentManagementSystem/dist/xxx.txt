@@ -2,3 +2,4 @@ this is a txt file
 dragon
 hot-fix test
 master commit
+hot-fix commit
